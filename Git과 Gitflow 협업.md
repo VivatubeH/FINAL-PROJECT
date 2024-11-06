@@ -133,4 +133,21 @@
        * intellij에서 현재 브랜치를 develop로 변경한다. [ checkout으로 이동가능 ]
        * update project를 실행해서 원격 저장소의 develop의 갱신내용을 내려받아서 로컬 저장소의 develop에 병합시킨다.
 
-  ### 팀장 및 개발자는 새로운 신규 기능을 개발할 때마다 5 -> 2 -> 3 -> 4 번 순서로 작업을 반복한다.
+### 팀장 및 개발자는 새로운 신규 기능을 개발할 때마다 5 -> 2 -> 3 -> 4 번 순서로 작업을 반복한다.
+
+## 현재 브랜치의 작업 내용을 로컬 저장소의 임시저장소에 저장하기
+
+  * 기능을 개발하던 도중에 develop 브랜치와 동기화가 필요한 경우 사용한다.
+
+  1. 현재 브랜치의 작업내용을 임시저장소에 저장시키기
+     + git stash
+  2. 로컬저장소 develop 브랜치로 이동시키기
+     + git checkout develop
+  3. 원격저장소 develop 브랜치의 최신 내용을 내려받기 ( 원격 develop와 로컬 develop을 동기화함 )
+     + git pull origin ( origin은 원격저장소의 이름이다. )
+  4. 동기화 완료 후 작업 중인 feature/xxx 브랜치로 이동하기
+     + git checkout feature/xxx
+  5. 동기화된 로컬 develop의 내용을 feature/xxx에 병합하기
+     + git merge develop
+  6. 임시 저장한 작업내용을 복원하기
+     + git stash apply
